@@ -253,13 +253,9 @@ function toArrayOfSquares(arr) {
  */
 function getMovingSum(arr) {
   let newArr = [];
-  arr.map((el, index) => {
-    if (index === 0) {
-      newArr.push(el);
-    } else if (index > 0) {
-      newArr.push(el + newArr[index - 1]);
-    }
-  });
+  arr.reduce((a, b, i) => {
+    return (newArr[i] = a + b);
+  }, 0);
   return newArr;
 }
 
@@ -275,13 +271,7 @@ function getMovingSum(arr) {
  * [ "a" ] => []
  */
 function getSecondItems(arr) {
-  let newArr = [];
-  arr.map((el, index) => {
-    if (index % 2 !== 0) {
-      newArr.push(el);
-    }
-  });
-  return newArr;
+  return arr.filter((el, index) => index % 2 !== 0);
 }
 
 /**
@@ -510,16 +500,16 @@ function toStringList(arr) {
  */
 function sortCitiesArray(arr) {
   function sortNames(a, b) {
-    var countryA = a.country.toUpperCase();
-    var countryB = b.country.toUpperCase();
+    let countryA = a.country.toUpperCase();
+    let countryB = b.country.toUpperCase();
     if (countryA < countryB) {
       return -1;
     }
     if (countryA > countryB) {
       return 1;
     } else {
-      var cityA = a.city.toUpperCase();
-      var cityB = b.city.toUpperCase();
+      let cityA = a.city.toUpperCase();
+      let cityB = b.city.toUpperCase();
       if (cityA < cityB) {
         return -1;
       }

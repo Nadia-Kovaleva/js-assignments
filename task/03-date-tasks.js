@@ -81,19 +81,34 @@ function isLeapYear(date) {
  */
 function timeSpanToString(startDate, endDate) {
   let dif = new Date(endDate - startDate);
-  let hours =
-    startDate.getUTCDate() === endDate.getUTCDate()
-      ? dif.getUTCHours()
-      : dif.getUTCHours() + 24;
-  return `${hours < 10 ? "0" + hours : hours}:${
-    dif.getUTCMinutes() < 10 ? "0" + dif.getUTCMinutes() : dif.getUTCMinutes()
-  }:${
-    dif.getUTCSeconds() < 10 ? "0" + dif.getUTCSeconds() : dif.getUTCSeconds()
-  }.${
-    dif.getUTCMilliseconds() < 10
-      ? "00" + dif.getUTCMilliseconds()
-      : dif.getUTCMilliseconds()
-  }`;
+  let hours = 0;
+  let res = 0;
+  if (startDate.getUTCDate() === endDate.getUTCDate()) {
+    hours = dif.getUTCHours();
+  } else {
+    hours = dif.getUTCHours() + 24;
+  }
+  if (hours < 10) {
+    res = "0" + hours;
+  } else {
+    res = hours;
+  }
+  if (dif.getUTCMinutes() < 10) {
+    res += ":" + "0" + dif.getUTCMinutes();
+  } else {
+    res += ":" + dif.getUTCMinutes();
+  }
+  if (dif.getUTCSeconds() < 10) {
+    res += ":" + "0" + dif.getUTCSeconds();
+  } else {
+    res += ":" + dif.getUTCSeconds();
+  }
+  if (dif.getUTCMilliseconds() < 10) {
+    res += "." + "00" + dif.getUTCMilliseconds();
+  } else {
+    res += "." + dif.getUTCMilliseconds();
+  }
+  return res;
 }
 
 /**
