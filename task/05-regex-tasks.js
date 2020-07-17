@@ -30,7 +30,7 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-  return /{[0-9a-f]{8}(-[0-9a-f]{4}){4}[0-9a-f]{8}}/i;
+  throw new Error("Not implemented");
 }
 
 /**
@@ -51,7 +51,7 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-  return /p.t/;
+  throw new Error("Not implemented");
 }
 
 /**
@@ -69,7 +69,7 @@ function getRegexForPitSpot() {
  * @return {RegExp}
  */
 function getRegexForIPv4() {
-  return /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+  throw new Error("Not implemented");
 }
 
 /**
@@ -87,7 +87,7 @@ function getRegexForIPv4() {
  * @return {RegExp}
  */
 function getRegexForSSN() {
-  return /^(?!(000))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$/;
+  throw new Error("Not implemented");
 }
 
 /**
@@ -111,9 +111,7 @@ function getRegexForSSN() {
  *   'Pa55'.match(validator) => false
  */
 function getPasswordValidator(minLength) {
-  return RegExp(
-    `^(?=.*?[0-9])(?=.*?[a-z])(?=.*?[A-Z])[a-zA-Z0-9]{${minLength},}$`
-  );
+  throw new Error("Not implemented");
 }
 
 module.exports = {
