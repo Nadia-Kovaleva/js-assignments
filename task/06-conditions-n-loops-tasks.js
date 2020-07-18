@@ -29,9 +29,9 @@
  *
  */
 function getFizzBuzz(num) {
-  if (num % 3 === 0 && num % 5 != 0) {
+  if (num % 3 === 0 && num % 5 !== 0) {
     return "Fizz";
-  } else if (num % 5 === 0 && num % 3 != 0) {
+  } else if (num % 5 === 0 && num % 3 !== 0) {
     return "Buzz";
   } else if (num % 3 === 0 && num % 5 === 0) {
     return "FizzBuzz";
@@ -522,7 +522,7 @@ function getCommonDirectoryPath(pathes) {
       if (path.search(RegExp(`${partsFrom1[i]}\/`)) < 0) {
         flag = false;
       }
-      if (path.charAt(0) != "/") {
+      if (path.charAt(0) !== "/") {
         firstSign = false;
       }
     });
