@@ -29,15 +29,14 @@
  *
  */
 function getFizzBuzz(num) {
-  if (num % 3 === 0 && num % 5 != 0) {
+  if (num % 3 === 0 && num % 5 !== 0) {
     return "Fizz";
-  } else if (num % 5 === 0 && num % 3 != 0) {
+  } else if (num % 5 === 0 && num % 3 !== 0) {
     return "Buzz";
   } else if (num % 3 === 0 && num % 5 === 0) {
     return "FizzBuzz";
-  } else {
-    return num;
   }
+  return num;
 }
 
 /**
@@ -94,11 +93,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a, b, c) {
-  if (a + b > c && a + c > b && c + b > a) {
-    return true;
-  } else {
-    return false;
-  }
+  return a + b > c && a + c > b && c + b > a;
 }
 
 /**
@@ -169,15 +164,11 @@ function doRectanglesOverlap(rect1, rect2) {
  *
  */
 function isInsideCircle(circle, point) {
-  if (
+  return (
     Math.sqrt(
       (circle.center.x - point.x) ** 2 + (circle.center.y - point.y) ** 2
     ) < circle.radius
-  ) {
-    return true;
-  } else {
-    return false;
-  }
+  );
 }
 
 /**
@@ -194,7 +185,10 @@ function isInsideCircle(circle, point) {
 function findFirstSingleChar(str) {
   for (let i = 0; i < str.length; i++) {
     let singleChar = str.charAt(i);
-    if (str.indexOf(singleChar) == i && str.indexOf(singleChar, i + 1) == -1) {
+    if (
+      str.indexOf(singleChar) === i &&
+      str.indexOf(singleChar, i + 1) === -1
+    ) {
       return singleChar;
     }
   }
@@ -464,7 +458,6 @@ function timespanToHumanString(startDate, endDate) {
   } else {
     res = Math.floor(period / 3.154e10) + " years ago";
   }
-
   return res;
 }
 
@@ -489,7 +482,7 @@ function timespanToHumanString(startDate, endDate) {
  */
 function toNaryString(num, n) {
   let res = [];
-  while (Math.floor(num / n) != 0 && num >= n) {
+  while (Math.floor(num / n) !== 0 && num >= n) {
     res.unshift(num % n);
     num = Math.floor(num / n);
   }
@@ -520,7 +513,7 @@ function getCommonDirectoryPath(pathes) {
       if (path.search(RegExp(`${partsFrom1[i]}/`)) < 0) {
         flag = false;
       }
-      if (path.charAt(0) != "/") {
+      if (path.charAt(0) !== "/") {
         firstSign = false;
       }
     });
@@ -603,7 +596,7 @@ function evaluateTicTacToePosition(position) {
     let result = true;
     for (let j = 0; j < 3; j++) {
       //first diagonal
-      result = result && position[j][j] == player;
+      result = result && position[j][j] === player;
     }
     if (result) {
       winner = player;
@@ -611,7 +604,7 @@ function evaluateTicTacToePosition(position) {
     result = true;
     for (let j = 0; j < 3; j++) {
       //second diagonal
-      result = result && position[2 - j][j] == player;
+      result = result && position[2 - j][j] === player;
     }
     if (result) {
       winner = player;
@@ -620,7 +613,7 @@ function evaluateTicTacToePosition(position) {
       result = true;
       for (let j = 0; j < 3; j++) {
         //lines
-        result = result && position[k][j] == player;
+        result = result && position[k][j] === player;
       }
       if (result) {
         winner = player;
@@ -628,7 +621,7 @@ function evaluateTicTacToePosition(position) {
       result = true;
       for (let j = 0; j < 3; j++) {
         //colums
-        result = result && position[j][k] == player;
+        result = result && position[j][k] === player;
       }
       if (result) {
         winner = player;
