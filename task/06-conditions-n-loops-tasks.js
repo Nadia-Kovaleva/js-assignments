@@ -185,7 +185,7 @@ function isInsideCircle(circle, point) {
 function findFirstSingleChar(str) {
   for (let i = 0; i < str.length; i++) {
     let singleChar = str.charAt(i);
-    if (str.indexOf(singleChar) == i && str.indexOf(singleChar, i + 1) == -1) {
+    if (str.indexOf(singleChar) === i && str.indexOf(singleChar, i + 1) === -1) {
       return singleChar;
     }
   }
@@ -596,7 +596,7 @@ function evaluateTicTacToePosition(position) {
     let result = true;
     for (let j = 0; j < 3; j++) {
       //first diagonal
-      result = result && position[j][j] == player;
+      result = result && position[j][j] === player;
     }
     if (result) {
       winner = player;
@@ -604,7 +604,7 @@ function evaluateTicTacToePosition(position) {
     result = true;
     for (let j = 0; j < 3; j++) {
       //second diagonal
-      result = result && position[2 - j][j] == player;
+      result = result && position[2 - j][j] === player;
     }
     if (result) {
       winner = player;
@@ -613,7 +613,7 @@ function evaluateTicTacToePosition(position) {
       result = true;
       for (let j = 0; j < 3; j++) {
         //lines
-        result = result && position[k][j] == player;
+        result = result && position[k][j] === player;
       }
       if (result) {
         winner = player;
@@ -621,7 +621,7 @@ function evaluateTicTacToePosition(position) {
       result = true;
       for (let j = 0; j < 3; j++) {
         //colums
-        result = result && position[j][k] == player;
+        result = result && position[j][k] === player;
       }
       if (result) {
         winner = player;
