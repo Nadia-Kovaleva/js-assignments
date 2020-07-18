@@ -214,7 +214,7 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-  var csv = arr
+  let csv = arr
     .map((el) => {
       return el.join();
     })
@@ -293,7 +293,7 @@ function propagateItemsByPositionIndex(arr) {
   arr.map((el, index) => (len += index + 1));
   if (arr.length < 2) {
     return arr;
-  } else {
+  } else if (arr.length >= 2) {
     let newArr = new Array(len);
     let p = 0;
     let i = 1;
@@ -332,14 +332,13 @@ function get3TopItems(arr) {
   let len = arr.length;
   if (len < 2) {
     return arr;
-  } else {
-    arr
-      .sort(function (a, b) {
-        return b - a;
-      })
-      .splice(3, len);
-    return arr;
   }
+  arr
+    .sort(function (a, b) {
+      return b - a;
+    })
+    .splice(3, len);
+  return arr;
 }
 
 /**
@@ -406,11 +405,8 @@ function sortDigitNamesByNumericOrder(arr) {
 function getItemsSum(arr) {
   if (arr.length === 0) {
     return 0;
-  } else {
-    return arr.reduce(
-      (accumulator, currentValue) => accumulator + currentValue
-    );
   }
+  return arr.reduce((accumulator, currentValue) => accumulator + currentValue);
 }
 
 /**
@@ -507,17 +503,16 @@ function sortCitiesArray(arr) {
     }
     if (countryA > countryB) {
       return 1;
-    } else {
-      let cityA = a.city.toUpperCase();
-      let cityB = b.city.toUpperCase();
-      if (cityA < cityB) {
-        return -1;
-      }
-      if (cityA > cityB) {
-        return 1;
-      }
-      return 0;
     }
+    let cityA = a.city.toUpperCase();
+    let cityB = b.city.toUpperCase();
+    if (cityA < cityB) {
+      return -1;
+    }
+    if (cityA > cityB) {
+      return 1;
+    }
+    return 0;
   }
   arr.sort((a, b) => sortNames(a, b));
   return arr;
@@ -626,7 +621,7 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-  var group_to_values = array.reduce((obj, item) => {
+  let group_to_values = array.reduce((obj, item) => {
     obj[keySelector(item)] = obj[keySelector(item)] || [];
     obj[keySelector(item)].push(valueSelector(item));
     return obj;
@@ -695,19 +690,16 @@ function swapHeadAndTail(arr) {
   let res = [];
   if (arr.length < 2) {
     return arr;
-  } else {
-    if (arr.length % 2 === 0) {
-      res.push(arr.slice(center, arr.length), arr.slice(0, center));
-      return res.flat();
-    } else {
-      res.push(
-        arr.slice(center + 1, arr.length),
-        arr[center],
-        arr.slice(0, center)
-      );
-      return res.flat();
-    }
+  } else if (arr.length % 2 === 0) {
+    res.push(arr.slice(center, arr.length), arr.slice(0, center));
+    return res.flat();
   }
+  res.push(
+    arr.slice(center + 1, arr.length),
+    arr[center],
+    arr.slice(0, center)
+  );
+  return res.flat();
 }
 
 module.exports = {

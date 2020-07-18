@@ -92,7 +92,12 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-  return -b / a;
+  let res = -b / a;
+  if (a === 0 || b === 0) {
+    res = 0;
+  }
+  console.log(res);
+  return res;
 }
 
 /**
@@ -205,9 +210,10 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  if (n <= 1) return false;
-  for (let i = 2; i * i <= n; i++) {
-    if (n % i == 0) return false;
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return false;
+    }
   }
   return true;
 }
@@ -232,7 +238,8 @@ function toNumber(value, def) {
     return def;
   } else if (typeof Number(value) === "number") {
     return Number(value);
-  } else return def;
+  }
+  return def;
 }
 
 module.exports = {
