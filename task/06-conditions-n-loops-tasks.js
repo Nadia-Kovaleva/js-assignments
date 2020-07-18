@@ -226,13 +226,13 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     } else {
       interval = "[" + a + ", " + b + ")";
     }
-  } else {
+  } else 
     if (isEndIncluded) {
       interval = "(" + a + ", " + b + "]";
     } else {
       interval = "(" + a + ", " + b + ")";
     }
-  }
+  
   return interval;
 }
 
@@ -451,13 +451,11 @@ function timespanToHumanString(startDate, endDate) {
     }
   } else if (period > 2.981e10 && period <= 4.709e10) {
     res = "a year ago";
-  } else {
-    if (period % 3.154e10 > 1.577e10) {
+  } else if (period % 3.154e10 > 1.577e10) {
       res = Math.ceil(period / 3.154e10) + " years ago";
     } else {
       res = Math.floor(period / 3.154e10) + " years ago";
     }
-  }
   return res;
 }
 
@@ -482,7 +480,7 @@ function timespanToHumanString(startDate, endDate) {
  */
 function toNaryString(num, n) {
   let res = [];
-  while (Math.floor(num / n) != 0 && num >= n) {
+  while (Math.floor(num / n) !== 0 && num >= n) {
     res.unshift(num % n);
     num = Math.floor(num / n);
   }
@@ -510,7 +508,7 @@ function getCommonDirectoryPath(pathes) {
   partsFrom1.shift();
   for (let i = 0; i < partsFrom1.length; i++) {
     pathes.forEach((path) => {
-      if (path.search(RegExp(`${partsFrom1[i]}\/`)) < 0) {
+      if (path.search(RegExp(`${partsFrom1[i]}/`)) < 0) {
         flag = false;
       }
       if (path.charAt(0) !== "/") {
