@@ -26,7 +26,7 @@ To start javascript assignments please follow the next steps:
 
 - Open [https://travis-ci.org/](https://travis-ci.org/) and sign in with your github account.
 - Activate your forked repo **js-assignments**.
-- Edit local README.md file and update all links (just replace all occurrences of `'rolling-scopes-school'` with your account name).
+- Edit local README.md file and update all links (just replace all occurrences of `'AisBrestEDU' or 'rolling-scopes-school'` with your account name).
 - Commit and push updated README.md to github:
 
 ```bash
@@ -35,7 +35,9 @@ To start javascript assignments please follow the next steps:
   git push origin master
 ```
 
-- Open https://github.com/Nadia-Kovaleva/js-assignments and test the build icon. Now it will run all tests and update status once you push changes to github. Keep this icon green!
+- Open https://github.com/AisBrestEDU/js-assignments and test the build icon. Now it will run all tests and update status once you push changes to github. Keep this icon green!
+
+* Open https://github.com/Nadia-Kovaleva/js-assignments and test the build icon. Now it will run all tests and update status once you push changes to github. Keep this icon green!
 
 ### How to setup work environment
 
