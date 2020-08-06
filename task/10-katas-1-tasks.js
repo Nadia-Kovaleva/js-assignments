@@ -18,7 +18,40 @@
  */
 function createCompassPoints() {
   let sides = ["N", "E", "S", "W"]; // use array of cardinal directions only!
-  throw new Error("Not implemented");
+  let result = [];
+  sides.forEach((side, idx) => {
+    let curSide = side;
+    let curIdx = 8 * idx - 1;
+    let nextIdx = idx + 1;
+    if (idx === 3) {
+      nextIdx = 0;
+    }
+    function addPoint(x) {
+      curIdx++;
+      result.push({ abbreviation: x, azimuth: curIdx * 11.25 });
+    }
+    addPoint(curSide);
+    curSide += "b" + sides[nextIdx];
+    addPoint(curSide);
+    if (idx % 2 === 0) {
+      curSide = side + side + sides[nextIdx];
+    } else curSide = side + sides[nextIdx] + side;
+    addPoint(curSide);
+    if (idx === 0 || idx === 2) {
+      curSide = side + sides[nextIdx];
+    } else curSide = sides[nextIdx] + side;
+    let prev = curSide;
+    curSide = prev + "b" + side;
+    addPoint(curSide);
+    addPoint(prev);
+    curSide = prev + "b" + sides[nextIdx];
+    addPoint(curSide);
+    curSide = sides[nextIdx] + prev;
+    addPoint(curSide);
+    curSide = sides[nextIdx] + "b" + side;
+    addPoint(curSide);
+  });
+  return result;
 }
 
 /**
@@ -55,7 +88,22 @@ function createCompassPoints() {
  *   'nothing to do' => 'nothing to do'
  */
 function* expandBraces(str) {
-  throw new Error("Not implemented");
+  if (!str.includes("{")) return yield "nothing to do";
+  let curArr = [str];
+  let regExp = /{([^{}]+)}/;
+  let result = new Set();
+  while (curArr.length > 0) {
+    let curStr = curArr.pop();
+    if (regExp.exec(curStr)) {
+      let parts = regExp.exec(curStr)[1].split(",");
+      for (let part of parts) {
+        curArr.push(curStr.replace(regExp, part));
+      }
+    } else result.add(curStr);
+  }
+  for (let el of result) {
+    yield el;
+  }
 }
 
 /**
